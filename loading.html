@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loading.....</title>
+    <style>
+        body{
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to right, #c72092 , #6c14d0);
+        }
+        .elastic{
+            display: flex;
+            gap: 8px;
+        }
+
+        .elastic .col{
+            width: 20px;
+            height: 80px;
+            border-radius: 10px;
+            background: linear-gradient(to bottom, #ff6ec7 , #c72092);
+            transform: scaleY(0.3);
+            animation: elastic 0.8s forwards infinite;
+        }
+
+
+
+
+        .elastic .col :nth-child(1) {animation-delay: 0s;}
+        .elastic .col :nth-child(2) { animation-delay: 0.1s;}
+        .elastic .col :nth-child(3) {animation-delay: 0.2s;}
+        .elastic .col :nth-child(4) {animation-delay: 0.3s;}
+        .elastic .col :nth-child(5) {animation-delay: 0.4s;}
+        .elastic .col :nth-child(6) {animation-delay: 0.5s;}
+        .elastic .col :nth-child(7) {animation-delay: 0.6s;}
+
+        @keyframes elastic {
+            0% {transform: scaleY(0.3);}
+            50% {transform: scaleY(1);}
+            100% {transform: scaleY(0.3);}
+        }
+        </style>
+</head>
+<body>
+    <div class="elastic">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            window.location.href ="shop.html";
+        }, 2000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product</title>
+    <link rel="stylesheet" href="hhhh.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body{
+            margin: 0;
+        }
+
+
+        .nav{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            box-shadow: 0 0 8px rgba(0 , 0 , 0 , 0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            z-index: 100;
+        }
+
+
+
+
+        .car_count{
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: #c72092;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;   
+        }
+
+
+
+
+        .product{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            gap: 60px;
+            margin-top: 70px;
+            border: 2px solid #c72092;
+            border-radius: 20px;
+            padding: 40px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 0 15px rgb(199 ,32 , 146 , 0.3);
+        }
+
+
+        .product img{
+            width: 450px;
+            margin-top: 100px;
+            margin-right: 30px;
+            margin-left: 150px;
+        }
+        .product_info h2{
+            font-size: 40px;
+        }
+        .product_info h3{
+            font-size: 30px;
+            margin: 15px 0;
+            color: #c72092;
+        }
+
+
+        .product_info p{
+            width: 500px;
+            line-height: 22px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .product_info .btn{
+            padding: 10px 25px;
+            background: linear-gradient(to right, #c72092 , #6c14d0);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+
+
+        .back{
+            padding: 10px 25px;
+            border: 2px solid #c72092;
+            color: #c72092;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <h2>shoe <span style="color: #c72092;">s</span></h2>
+        <div class="cart_icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart_count" id="cart_count">0</span>
+        </div>
+    </div>
+
+
+    <div class="product">
+        <img src="" id="prod_img">
+        <div class="product_info">
+            <h2 id="prod_name"></h2>
+            <h3 id="prod_price"></h3>
+            <p>A stylish sneaker with a premium finish , smart-casual look.</p>
+            <button class="btn" onclick="addTOCart()"> Add to Cart</button>
+            <a href="shop.html"  class="back"> Back to shop</a>
+        </div>
+    </div>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+document.getElementById("prod_img").src = params.get("img");
+document.getElementById("prod_price").innerText = params.get("price");
+document.getElementById("prod_name").innerText = params.get("name");
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const productId = params.get("img");
+
+document.getElementById("cart_count").innerText = cart.length;
+
+function addTOCart() {
+    if (cart.includes(productId)) {
+        cart = cart.filter(item => item !== productId);
+    } else {
+        cart.push(productId);
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("cartCount", cart.length);
+    document.getElementById("cart_count").innerText = cart.length;
+}
+    </script>
+</body>
+</html>
